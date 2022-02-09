@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <script src="quotes.js"></script>
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="style.css">
+<script src="quotes.js"></script>
+<script src="main.js"></script>
+<link rel="stylesheet" href="style.css">
+
 <head>
 
 </head>
@@ -11,7 +12,7 @@
     <div class="container">
         <div class="search-container">
             <label for="search">Write within quoted text</label>
-            <input id="search" placeholder="Type `web` for example" type="search" autocomplete="off" />
+            <input id="search" placeholder="Start writing here..." type="search" autocomplete="off" />
         </div>
 
         <figure>
@@ -23,7 +24,10 @@
         </figure>
         <mark class="highlight"></mark>
     </div>
-
+    <div class="pasteBox">
+        <!-- <label for="search">Change text</label> -->
+        <textarea id="paste" placeholder="Paste text here..." type="search" autocomplete="off"></textarea>
+    </div>
 </body>
 
 </html>

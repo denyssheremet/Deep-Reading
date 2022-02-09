@@ -8,6 +8,7 @@ window.addEventListener("load", function () {
 
     const $box = document.getElementById('box');
     const $search = document.getElementById('search');
+    const $paste = document.getElementById('paste');
 
     var prevState = "";
     let quote = quotes[randomBetween(0, quotes.length - 1)];
@@ -37,7 +38,15 @@ window.addEventListener("load", function () {
         
     });
 
-    window.addEventListener('keyup', function(event) {
+    $paste.addEventListener("keypress", (event)=> {
+        if (event.keyCode === 13) {
+            
+        }
+      });
+
+
+
+    $search.addEventListener('keyup', function(event) {
         if (event.keyCode === 39 || event.keyCode === 13 ) {
             prevState = "";
             let quote = quotes[randomBetween(0, quotes.length - 1)];
