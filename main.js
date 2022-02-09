@@ -8,8 +8,8 @@ window.addEventListener("load", function () {
 
     const $box = document.getElementById('box');
     const $search = document.getElementById('search');
-    var prevState = "";
 
+    var prevState = "";
     let quote = quotes[randomBetween(0, quotes.length - 1)];
     $box.innerHTML = quote;
 
@@ -34,6 +34,17 @@ window.addEventListener("load", function () {
             $box.innerHTML = prevText;
         }
         prevState = $search.value;
+        
     });
+
+    window.addEventListener('keyup', function(event) {
+        if (event.keyCode === 39 || event.keyCode === 13 ) {
+            prevState = "";
+            let quote = quotes[randomBetween(0, quotes.length - 1)];
+            $box.innerHTML = quote;
+            $search.value = "";
+            counter = 0;
+        }
+      });
 
 });
