@@ -48,6 +48,19 @@ function prepareText(text) {
             text[j] = text[j] + " " + text[j + 1];
             text.splice(j + 1, 1);
         }
+        // // repeat each word 3 times
+        // t = text[j].split(" ");
+        // let k = 0;
+        // let w = [];
+        // while (k < t.length) {
+        //     w.push(t[k]);
+        //     w.push(t[k]);
+        //     w.push(t[k]);
+        //     k++
+        // }
+        // text[j] = w.join(" ")
+        //     .replace(/[^A-Za-z ]/g, ''); // remove all interpunction
+
         j++;
     }
     return text;

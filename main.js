@@ -12,7 +12,6 @@ function changePageNumber(num, total) {
         style.appendChild(document.createTextNode(css));
     }
 
-    console.log(num, total)
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
