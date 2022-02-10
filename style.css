@@ -81,6 +81,15 @@ blockquote::before {
   top: -20px;
 }
 
+blockquote::after {
+    color: #ccc;
+    content: '1/30';
+    font-size: 15px;
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+  }
+
 figcaption {
   color: #aaa;
   font-size: 14px;

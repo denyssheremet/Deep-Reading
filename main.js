@@ -2,6 +2,19 @@ const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min 
 var counter = 0;
 
 
+function changePageNumber(num, total) {
+    var css = 'blockquote::after{ content: "' + num + "/" + total + '"; }';
+    var style = document.createElement('style');
+
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+
+    console.log(num, total)
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
 
 
 window.addEventListener("load", function () {
@@ -11,7 +24,14 @@ window.addEventListener("load", function () {
     const $paste = document.getElementById('paste');
 
     var prevState = "";
-    let quote = quotes[randomBetween(0, quotes.length - 1)];
+    let parCounter = 0;
+
+    let randNumber = randomBetween(0, speeches.length - 1);
+    quotes = speeches[randNumber][0]
+    let quote = quotes[counter];
+    document.getElementById("citation").innerHTML = speeches[randNumber][1];
+    changePageNumber(parCounter + 1, quotes.length);
+
     $box.innerHTML = quote;
 
 
@@ -35,25 +55,31 @@ window.addEventListener("load", function () {
             $box.innerHTML = prevText;
         }
         prevState = $search.value;
-        
+
     });
 
-    $paste.addEventListener("keypress", (event)=> {
+    $paste.addEventListener("keypress", (event) => {
         if (event.keyCode === 13) {
-            
-        }
-      });
-
-
-
-    $search.addEventListener('keyup', function(event) {
-        if (event.keyCode === 39 || event.keyCode === 13 ) {
+            quotes = prepareText($paste.value);
             prevState = "";
-            let quote = quotes[randomBetween(0, quotes.length - 1)];
-            $box.innerHTML = quote;
+            parCounter = 0;
+            $box.innerHTML = quotes[parCounter];
             $search.value = "";
             counter = 0;
         }
-      });
+    });
+
+
+
+    $search.addEventListener('keyup', function (event) {
+        if (event.keyCode === 39 || event.keyCode === 13) {
+            prevState = "";
+            if (++parCounter >= quotes.length) { parCounter = 0; }
+            $box.innerHTML = quotes[parCounter];
+            $search.value = "";
+            counter = 0;
+            changePageNumber(parCounter + 1, quotes.length);
+        }
+    });
 
 });
